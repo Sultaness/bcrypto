@@ -4,7 +4,7 @@
 #include <node.h>
 #include <nan.h>
 
-#include "openssl/evp.h"
+#include "hash/cipher.h"
 
 class BCipherBase : public Nan::ObjectWrap {
 public:
@@ -14,9 +14,14 @@ public:
   BCipherBase();
   ~BCipherBase();
 
-  const EVP_CIPHER *type;
-  bool encrypt;
-  EVP_CIPHER_CTX *ctx;
+  int type;
+  int mode;
+  int encrypt;
+  int first;
+  int done;
+  uint8_t tag[16];
+  size_t tag_len;
+  bcrypto_cipher_t ctx;
 
 private:
   static NAN_METHOD(Init);
