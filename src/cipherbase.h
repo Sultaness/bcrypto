@@ -4,7 +4,7 @@
 #include <node.h>
 #include <nan.h>
 
-#include "hash/cipher.h"
+#include "cipher/cipher.h"
 
 class BCipherBase : public Nan::ObjectWrap {
 public:
