@@ -5,11 +5,12 @@ os:
   - linux
   - windows
 
-powershell:
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then 
-    mkdir nuget;
-    Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Destination nuget;
-    fi
+before_install:
+  - powershell:
+    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then 
+      mkdir nuget;
+      Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Destination nuget;
+      fi
 
 install: 
   - npm install -d
