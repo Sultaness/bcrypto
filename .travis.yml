@@ -1,25 +1,24 @@
-  language: node_js
-  
-  node_js: v10.16.0
+language: node_js 
+node_js: v10.16.0
 
-  os:
-    - linux
-    - windows
+os:
+  - linux
+  - windows
 
-  powershell:
-    - | if [ "$TRAVIS_OS_NAME" = "windows" ]; then 
-        mkdir nuget;
-        Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Destination nuget;
-      fi
+powershell:
+  - | if [ "$TRAVIS_OS_NAME" = "windows" ]; then 
+    mkdir nuget;
+    Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Destination nuget;
+    fi
 
-  install: 
-    - npm install
+install: 
+  - npm install
 
-  script:
-    - npm run test
+script:
+  - npm run test
 
-  after_success:
-    - bash <(curl -s https://codecov.io/bash)
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 
-  notifications:
-    - slack: merkleblock:ZRA3bl4HQkXwpcZeeRam5RO1
+notifications:
+  - slack: merkleblock:ZRA3bl4HQkXwpcZeeRam5RO1
