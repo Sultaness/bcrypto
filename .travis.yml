@@ -1,4 +1,5 @@
   language: node_js
+  
   node_js: v10.16.0
 
   os:
@@ -7,8 +8,8 @@
 
   powershell:
     - | if [ "$TRAVIS_OS_NAME" = "windows" ]; then 
-      mkdir nuget;
-      Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Destination nuget;
+        mkdir nuget;
+        Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Destination nuget;
       fi
 
   install: 
