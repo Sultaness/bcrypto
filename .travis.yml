@@ -12,7 +12,7 @@ powershell:
     fi
 
 install: 
-  - npm install
+  - npm install -d
 
 script:
   - npm run test
