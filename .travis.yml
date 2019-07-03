@@ -1,19 +1,24 @@
-{
-  "os": "linux",
-  "dist": "trusty",
-  "sudo": false,
-  "group": "stable",
-  "script": [
-    "npm run test"
-  ],
-  "install": [
-    "npm install"
-  ],
-  "node_js": "v10.8.0",
-  "language": "node_js",
-  "after_success": [
-    "bash <(curl -s https://codecov.io/bash)"
-  ],
-  "before_install": [
-  ]
-}
+  language: node_js
+  node_js: v10.16.0
+
+  os:
+    - linux
+    - windows
+
+  before_install:
+    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then 
+
+      npm install --global --production windows-build-tools;
+      mkdir nuget;
+      Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Destination nuget; fi
+
+  install: 
+    - npm install
+
+  script:
+    - npm run test
+
+  after_success:
+    - bash <(curl -s https://codecov.io/bash)
+
+
