@@ -18,7 +18,8 @@ script:
         - nvs use v10.16.0
         - node --version
         - npm install -d
-        - ls -alh build/Release/bcrypto.node
+        - ls -alh /c/Users/travis/build/Sultaness/bcrypto/build/Release/bcrypto.node
+        - node --version
         - node -e "console.log(require('/c/Users/travis/build/Sultaness/bcrypto/build/Release/bcrypto.node'))"
 
 after_success:
