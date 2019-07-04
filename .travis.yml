@@ -20,11 +20,8 @@ install:
 
 script:
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-<<<<<<< HEAD
-    powershell -c "npm run test";
-=======
-     powershell -c "npm run test";
->>>>>>> 4df80db34749cc66ba602429bdf9eb1f5019cdb7
+    ls -alh build/Release/bcrypto.node;  
+    node -e "console.log(require('./build/release/bcrypto.node'))"
     fi
 
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
