@@ -12,7 +12,7 @@ before_install:
   - choco install -y nodejs
   - powershell -c 'refreshenv'
   - echo $PATH
-  - export PATH=$PATH:/c/Program\ Files/nodejs:/c/Program\ Files/nodejs/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:
+  - export PATH=$PATH:"/c/Program Files/nodejs":"/c/Program Files/nodejs/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin"
   - echo $PATH
 
 install:
