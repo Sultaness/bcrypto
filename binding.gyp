@@ -119,9 +119,9 @@
         ["OS=='win'", {
           "conditions": [
             ["target_arch=='ia32'", {
-              "openssl_root%": "C:/OpenSSL-Win32"
+              "openssl_root%": "<(module_root_dir)/Work/bcrypto/nuget/openssl-vc141-static-x86_64.1.0.2/build/native/lib/Win32"
             }, {
-              "openssl_root%": "C:/OpenSSL-Win64"
+              "openssl_root%": "<(module_root_dir)/nuget/openssl-vc141-static-x86_64.1.0.2/build/native/lib/x64"
             }]
           ]
         }],
@@ -170,7 +170,7 @@
       }],
       ["OS=='win'", {
         "libraries": [
-          "-l<(openssl_root)/lib/libeay32.lib"
+          "-l<(openssl_root)/static/Release/libeay32.lib"
         ],
         "include_dirs": [
           "<(openssl_root)/include"

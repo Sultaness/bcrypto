@@ -1,0 +1,28 @@
+language: c
+
+os:
+  - windows
+
+before_install:
+  - powershell -c "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine"
+  - powershell -c "Import-Module PackageManagement; Install-PackageProvider Nuget"
+  - powershell -c "Import-Module PackageManagement; Register-PackageSource -Name NuGetOrg -Location https://www.nuget.org/api/v2 -ProviderName NuGet"
+  - powershell -c "Import-Module PackageManagement; Install-Package -Source NuGetOrg -Name NuGet.CommandLine -Force -ExcludeVersion -Destination C:/tools"
+  - powershell -c "Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Force -Destination nuget"
+  - choco install -y nodejs
+  - powershell -c 'refreshenv'
+  - echo $PATH
+  - export PATH=$PATH:"/c/Program Files/nodejs":"/c/Program Files/nodejs/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin"
+  - echo $PATH
+
+install:
+  - npm install -d
+
+script:
+  - npm run test
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
+notifications:
+  - slack: merkleblock:ZRA3bl4HQkXwpcZeeRam5RO1
