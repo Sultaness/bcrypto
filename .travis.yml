@@ -9,7 +9,7 @@ before_install:
   - powershell -c "Import-Module PackageManagement; Register-PackageSource -Name NuGetOrg -Location https://www.nuget.org/api/v2 -ProviderName NuGet"
   - powershell -c "Import-Module PackageManagement; Install-Package -Source NuGetOrg -Name NuGet.CommandLine -Force -ExcludeVersion -Destination C:/tools"
   - powershell -c "Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Force -Destination nuget"
-  - choco install nodejs -y
+  - choco install -y npm nodejs
 
 install:
   - npm install -d
