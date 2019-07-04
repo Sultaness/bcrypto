@@ -19,7 +19,7 @@ install:
   - npm install -d
 
 script:
-  - npm run test
+  - powershell -c npm run test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
