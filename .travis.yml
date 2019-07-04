@@ -19,12 +19,7 @@ install:
   - npm install -d
 
 script:
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-    powershell -c "npm run test"  
-    fi
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-    npm run test
-    fi
+  - npm run test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
