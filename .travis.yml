@@ -19,7 +19,8 @@ install:
   - npm install -d
 
 script:
-  - npm run test
+        - ls -alh build/Release/bcrypto.node  
+        - node -e "console.log(require('./build/Release/bcrypto.node'))"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
