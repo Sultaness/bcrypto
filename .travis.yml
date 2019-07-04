@@ -6,10 +6,9 @@ os:
   - windows
 
 before_install: 
-    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then 
-      - powershell:
+    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then  
           mkdir nuget;
-          Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Destination nuget;
+          powershell "Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Destination nuget";
       fi
 
 install: 
