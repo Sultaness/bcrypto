@@ -20,14 +20,7 @@ install:
 
 script:
   - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-   - bash <(curl -s -X POST \
-  -H "Content-Type: application/json" \
-  -H "Accept: application/json" \
-  -H "Travis-API-Version: 3" \
-  -H "Authorization: token f35PlY_1kaF1zDVGtYHm3w" \
-  -d "{\"quiet\": true}" \
-  https://api.travis-ci.org/job/554192219/debug)  
-   - powershell -c "npm run test";
+     powershell -c "npm run test";
     fi
 
   - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
