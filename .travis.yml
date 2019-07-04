@@ -12,11 +12,11 @@ before_install:
   - choco install -y nodejs
 
 install:
-  - ls -alh '/c/Program Files/nodejs/npm'
-  - '/c/Program Files/nodejs/npm' install -d
+  - ls -alh "/c/Program Files/nodejs/npm"
+  - "/c/Program Files/nodejs/npm" install -d
 
 script:
-  - '/c/Program Files/nodejs/npm' run test
+  - "/c/Program Files/nodejs/npm" run test
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
