@@ -1,26 +1,25 @@
 language: node_js
-node_js: v10.16.0
+node_js:
+  - "node"
 
 os:
   - windows
   - linux
 
 before_install:
-    - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
-      powershell -c "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine";
-      powershell -c "Import-Module PackageManagement; Install-PackageProvider Nuget";
-      powershell -c "Import-Module PackageManagement; Register-PackageSource -Name NuGetOrg -Location https://www.nuget.org/api/v2 -ProviderName NuGet";
-      powershell -c "Import-Module PackageManagement; Install-Package -Source NuGetOrg -Name NuGet.CommandLine -Force -ExcludeVersion -Destination C:/tools";
-      powershell -c "Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Force -Destination nuget";
-      fi
+  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
+    powershell -c "Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope LocalMachine";
+    powershell -c "Import-Module PackageManagement; Install-PackageProvider Nuget";
+    powershell -c "Import-Module PackageManagement; Register-PackageSource -Name NuGetOrg -Location https://www.nuget.org/api/v2 -ProviderName NuGet";
+    powershell -c "Import-Module PackageManagement; Install-Package -Source NuGetOrg -Name NuGet.CommandLine -Force -ExcludeVersion -Destination C:/tools";
+    powershell -c "Install-Package openssl-vc141-static-x86_64 -RequiredVersion 1.0.2 -Force -Destination nuget";
+    fi
 
 script:
-        - nvs use v10.16.0
-        - node --version
-        - npm install -d
-        - ls -alh /c/Users/travis/build/Sultaness/bcrypto/build/Release/bcrypto.node
-        - node --version
-        - node -e "console.log(require('/c/Users/travis/build/Sultaness/bcrypto/build/Release/bcrypto.node'))"
+  - yarn install -d
+  - ls -alh /c/Users/travis/build/Sultaness/bcrypto/build/Release/bcrypto.node
+  - node --version
+  - node -e "require('/c/Users/travis/build/Sultaness/bcrypto/build/Release/bcrypto.node')"
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
