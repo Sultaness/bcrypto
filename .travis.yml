@@ -19,14 +19,8 @@ install:
   - npm install -d
 
 script:
-  - if [ "$TRAVIS_OS_NAME" = "windows" ]; then
     ls -alh build/Release/bcrypto.node;  
     node -e "console.log(require('./build/release/bcrypto.node'))"
-    fi
-
-  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-      npm run test;
-    fi
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
